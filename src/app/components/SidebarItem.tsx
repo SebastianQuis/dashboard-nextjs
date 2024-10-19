@@ -18,9 +18,11 @@ export default function SidebarItem({ href, icon, title, subTitle }: Props) {
     <>
       <Link
         href={href}
-        className={`w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150 ${
-          href === pathName ? "bg-blue-700" : ""
-        }`}
+        style={{ width: "250px" }}
+        className={`
+          w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150
+          ${href === pathName ? "bg-blue-800" : ""}
+        `}
       >
         <div>{icon}</div>
         <div className="flex flex-col">

@@ -26,9 +26,9 @@ export default function PokemonCard({ pokemon }: Props) {
           <div className="mt-5">
             <Link
               className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100"
-              href={`/dashboard/pokemons/${pokemon.id}`}
+              href={`/dashboard/pokemons/${pokemon.name}`}
             >
-              Más información
+              By name
             </Link>
           </div>
         </div>

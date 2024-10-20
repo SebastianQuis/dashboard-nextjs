@@ -3,14 +3,33 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Pokemon } from "@/pokemons/interfaces/pokemon";
+import { PokemonResponse } from "@/pokemons/interfaces/pokemons-response";
 
 interface Props {
-  params: { id: string };
+  params: { name: string };
+}
+
+export async function generateStaticParams() {
+  const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`);
+
+  const data: PokemonResponse = await resp.json();
+
+  // const array151Pokemon = data.results.map((pokemon) => ({
+  //   name: pokemon.name,
+  // }));
+
+  // return array151Pokemon.map(({ name }) => ({
+  //   name: name,
+  // }));
+
+  return data.results.map((pokemon) => ({
+    name: pokemon.name,
+  }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const pokemon = await getPokemonById(params.id);
+    const pokemon = await getPokemonById(params.name);
 
     return {
       title: `Pokemon ${pokemon.name}`,
@@ -20,14 +39,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     console.log(error);
     return {
       title: `Pokemon no encontrado`,
-      description: `El pokemon con id ${params.id} no fue encontrado`,
+      description: `El pokemon ${params.name} no fue encontrado`,
     };
   }
 }
 
-const getPokemonById = async (id: string): Promise<Pokemon> => {
+const getPokemonById = async (name: string): Promise<Pokemon> => {
   try {
-    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
       // cache: "force-cache", // todo - cambiar, esto es por default
       next: {
         revalidate: 3540,
@@ -45,7 +64,8 @@ const getPokemonById = async (id: string): Promise<Pokemon> => {
 };
 
 export default async function PokemonPage({ params }: Props) {
-  const pokemon = await getPokemonById(params.id);
+  console.log(params);
+  const pokemon = await getPokemonById(params.name);
 
   return (
     <div className="flex mt-5 flex-col mx-12 items-center text-slate-800">

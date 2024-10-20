@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { SimplePokemon } from "../interfaces/simple-pokemon";
 import Image from "next/image";
+
+import { SimplePokemon } from "../interfaces/simple-pokemon";
 
 interface Props {
   pokemon: SimplePokemon;

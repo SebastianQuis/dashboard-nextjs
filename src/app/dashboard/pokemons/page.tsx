@@ -1,7 +1,5 @@
-import PokemonGrid from "@/app/pokemons/components/PokemonGrid";
-import type { SimplePokemon } from "@/app/pokemons/interfaces/simple-pokemon";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import PokemonGrid from "@/pokemons/components/PokemonGrid";
+import type { SimplePokemon } from "@/pokemons/interfaces/simple-pokemon";
 
 const fetchPokemons = async (
   limit = 20,
@@ -19,7 +17,6 @@ const fetchPokemons = async (
 
   // throw notFound();
   // throw new Error("Paga la deuda!");
-
   return pokemons;
 };
 

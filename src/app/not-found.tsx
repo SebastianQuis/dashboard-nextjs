@@ -1,6 +1,6 @@
 // TODO -not found general.
 
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/sidebar/Sidebar";
 import Link from "next/link";
 
 export default function NotFound() {

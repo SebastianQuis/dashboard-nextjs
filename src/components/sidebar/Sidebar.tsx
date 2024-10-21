@@ -1,4 +1,4 @@
-import { Database, HomeIcon, PlaySquare } from "lucide-react";
+import { Database, HeartPulseIcon, HomeIcon, PlaySquare } from "lucide-react";
 import Image from "next/image";
 import SidebarItem from "./SidebarItem";
 
@@ -12,7 +12,7 @@ const sidebarItems = [
   {
     href: "/dashboard/counter",
     icon: <Database />,
-    title: "Dashboard",
+    title: "Counter",
     subTitle: "Manager",
   },
   {
@@ -20,6 +20,12 @@ const sidebarItems = [
     icon: <PlaySquare />,
     title: "Pokemon",
     subTitle: "Generación estática",
+  },
+  {
+    href: "/dashboard/favoritos",
+    icon: <HeartPulseIcon />,
+    title: "Favoritos",
+    subTitle: "Global state",
   },
 ];
 

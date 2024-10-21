@@ -6,7 +6,6 @@ export const metadata = {
 };
 
 export default function CounterPage() {
-  // CONEXIÓN A BASE DE DATOS
   return (
     <div
       style={{ width: "calc(100vw - 20rem)" }}
@@ -14,6 +13,7 @@ export default function CounterPage() {
     >
       <span>Contador</span>
 
+      {/* <CartCounter /> */}
       <CartCounter value={20} />
     </div>
   );

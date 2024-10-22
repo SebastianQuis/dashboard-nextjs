@@ -12,7 +12,6 @@ interface Props {
 
 export default function SidebarItem({ href, icon, title, subTitle }: Props) {
   const pathName = usePathname();
-  console.log(pathName);
 
   return (
     <>

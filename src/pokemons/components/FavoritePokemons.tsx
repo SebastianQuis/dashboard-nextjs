@@ -6,7 +6,7 @@ import { HeartCrackIcon } from "lucide-react";
 import { useState } from "react";
 
 export default function FavoritePokemons() {
-  const pokemonsFavorite = useAppSelector((state) => state.pokemons);
+  const pokemonsFavorite = useAppSelector((state) => state.pokemons.favorites);
   const listPokemonsFavorite = Object.values(pokemonsFavorite);
 
   const [pokemons, setpokemons] = useState(listPokemonsFavorite);

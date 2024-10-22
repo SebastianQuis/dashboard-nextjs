@@ -14,7 +14,7 @@ interface Props {
 
 export default function PokemonCard({ pokemon }: Props) {
   // todo -  !! la doble negacion convierte un valor undefined a un valor booleano
-  const isFavorite = useAppSelector((state) => !!state.pokemons[pokemon.id]);
+  const isFavorite = useAppSelector((state) => !!state.pokemons.favorites[pokemon.id]);
   const dispatch = useAppDispatch();
 
   const onToggleFavorite = () => {

@@ -8,16 +8,15 @@ import { useState } from "react";
 export default function FavoritePokemons() {
   const pokemonsFavorite = useAppSelector((state) => state.pokemons.favorites);
   const listPokemonsFavorite = Object.values(pokemonsFavorite);
-
-  const [pokemons, setpokemons] = useState(listPokemonsFavorite);
+  // const [pokemons, setpokemons] = useState(listPokemonsFavorite);
 
   return (
     <>
-      {pokemons.length < 1 ? (
+      {listPokemonsFavorite.length < 1 ? (
         <NoFavoritePokemons />
       ) : (
         <div className="flex flex-wrap gap-8 items-center justify-center">
-          {pokemons.map((pokemon) => (
+          {listPokemonsFavorite.map((pokemon) => (
             <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </div>

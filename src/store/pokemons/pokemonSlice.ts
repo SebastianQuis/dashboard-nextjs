@@ -13,13 +13,13 @@ interface PokemonState {
   }
 }
 
-const getPokemonsLocalStorage = () : PokemonState  => {
-  // solucion parcial para el error que se muestra al generar el build de produccion.
-  // if ( typeof localStorage === 'undefined' ) return { favorites: {} }; 
-
-  const favorites = JSON.parse( localStorage.getItem('favorite-pokemons') ?? '{}' );
-  return favorites;
-};
+// const getPokemonsLocalStorage = () : PokemonState  => {
+//   solucion parcial para el error que se muestra al generar el build de produccion.
+//   if ( typeof localStorage === 'undefined' ) return { favorites: {} }; 
+// 
+//   const favorites = JSON.parse( localStorage.getItem('favorite-pokemons') ?? '{}' );
+//   return favorites;
+// };
 
 const initialState: PokemonState = {
   favorites: {}
@@ -31,8 +31,9 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {
 
-
-
+    setInitialPokemon( state, action: PayloadAction<{ [key: string]: SimplePokemon }> ) {
+      state.favorites = action.payload;
+    },
 
     toggleFavorite(state, action: PayloadAction<SimplePokemon>) {
       const { id, name } = action.payload;
@@ -49,6 +50,6 @@ const pokemonSlice = createSlice({
   },
 });
 
-export const { toggleFavorite } = pokemonSlice.actions;
+export const { toggleFavorite, setInitialPokemon } = pokemonSlice.actions;
 
 export default pokemonSlice.reducer;
